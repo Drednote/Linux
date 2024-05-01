@@ -1,0 +1,31 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+WHITE='\033[1;37m'
+NC='\033[0m' # No Color
+
+#### Check for yay ####
+ISYAY=/sbin/yay
+if [ ! -f "$ISYAY" ]; then
+    read -p "$(echo -e ${WHITE}"Would you like to install yay? (y,n) ${NC}")" YAY
+    if [[ $YAY == "Y" || $YAY == "y" ]]; then
+        CUR_PWD=$(pwd)
+
+        sudo pacman -S --noconfirm base-devel
+        cd /opt/ || exit
+        sudo git clone https://aur.archlinux.org/yay.git
+        sudo chown -R "$USER":"$USER" yay/
+        cd /opt/yay/ || exit
+        makepkg -si --noconfirm
+        echo -e "${GREEN}==>${WHITE} yay was installed${NC}"
+        
+        echo -e "${GREEN}==>${WHITE} Updating yay${NC}"
+        yay -Suy --noconfirm
+        cd "$CUR_PWD" || exit
+    fi
+else
+    echo -e "${GREEN}==>${WHITE} Updating yay${NC}"
+    yay -Suy --noconfirm
+fi
