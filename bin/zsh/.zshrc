@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -74,6 +74,7 @@ plugins=(git extract zsh-autosuggestions zsh-syntax-highlighting)
 
 # append
 path+=("$BUN_INSTALL/bin")
+path+=("$HOME/bin")
 # export to sub-processes (make it inherited by child processes)
 export PATH
 
@@ -84,8 +85,6 @@ source $ZSH/oh-my-zsh.sh
 # ENV_VARIABLES
 
 # END_ENV_VARIABLES
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -108,6 +107,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

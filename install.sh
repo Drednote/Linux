@@ -10,18 +10,23 @@ UTILS="vim htop nvtop"
 
 sudo pacman -Syu --noconfirm
 
-read -p "$(echo -e ${WHITE}"Install $UTILS? (y,n) ${NC}")" UT
+read -p "$(echo -e ${YELLOW}"==>${WHITE}Install $UTILS? (y,n) ${NC}")" UT
 if [[ $UT == "Y" || $UT == "y" ]]; then
     # shellcheck disable=SC2086
     sudo pacman -S --noconfirm $UTILS
 fi
 
-read -p "$(echo -e ${WHITE}"Configure Zsh? (y,n) ${NC}")" ZSH
+read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure Zsh? (y,n) ${NC}")" ZSH
 if [[ $ZSH == "Y" || $ZSH == "y" ]]; then
     source bin/zsh/init
 fi
 
 source bin/yay
+
+read -p "$(echo -e ${YELLOW}"==>${WHITE}Install Java? (y,n) ${NC}")" JAVA
+if [[ $JAVA == "Y" || $JAVA == "y" ]]; then
+    source java
+fi
 
 ### Script is done ###
 echo -e "${GREEN}==>${WHITE} Script had completed. Now you can reboot to apply all settings${NC}"

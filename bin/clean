@@ -1,0 +1,6 @@
+#!/bin/bash
+
+yay -Scc
+yay -Qtdq | yay -Rns -
+
+LC_ALL=C yay -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h

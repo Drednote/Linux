@@ -54,6 +54,14 @@ else
     git pull
 fi
 
+IS_10K=$ZSH/custom/themes/powerlevel10k
+if [ ! -d "$IS_10K" ]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH"/custom/themes/powerlevel10k
+else
+    cd "$ZSH"/custom/themes/powerlevel10k || exit
+    git pull
+fi
+
 # change dafault shell
 if [[ $SHELL != "/usr/bin/zsh" ]]; then
     echo -e "${GREEN}==>${WHITE} Change shell to zsh${NC}"

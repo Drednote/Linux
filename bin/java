@@ -1,0 +1,16 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+WHITE='\033[1;37m'
+NC='\033[0m' # No Color
+
+read -p "$(echo -e ${YELLOW}"==>${WHITE} Enter java version to install ${NC}")" JAVA
+
+if ! sudo pacman -S jdk"$JAVA"-openjdk ; then
+    read -p "$(echo -e ${YELLOW}"==>${WHITE} Install specific java version is failed, install latest? (y,n) ${NC}")" DEF
+    if [[ $DEF == "Y" || $DEF == "y" ]]; then
+        sudo pacman -S --noconfirm jdk-openjdk
+    fi
+fi
