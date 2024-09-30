@@ -72,6 +72,10 @@ HIST_STAMPS="mm.dd.yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git extract zsh-autosuggestions zsh-syntax-highlighting)
 
+# ENV_VARIABLES
+
+# END_ENV_VARIABLES
+
 # append
 path+=("$BUN_INSTALL/bin")
 path+=("$HOME/bin")
@@ -81,10 +85,6 @@ export PATH
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# ENV_VARIABLES
-
-# END_ENV_VARIABLES
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
