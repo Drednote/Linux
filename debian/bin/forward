@@ -1,0 +1,74 @@
+#!/bin/zsh
+
+checkargs () {
+    if [[ $OPTARG =~ ^-[n]$ ]] then
+        echo "Unknow argument $OPTARG for option $opt!"
+        exit 1
+    fi
+}
+
+displayHelp() {
+    echo "\nUsage: my forward [OPTIONS] <serviceName>"
+    echo "\nOptions:"
+    echo "  -i                            Bind to specified host machine port"
+    echo "                                Default 8080\n"
+    echo "  -e                            Bind to specified external pod port"
+    echo "                                Default 8080\n"
+}
+
+if [[ -z $* ]] then
+    echo "No args present!"
+    displayHelp
+    exit 1
+fi
+
+while getopts ":h" opt; do
+  case $opt in
+    h )
+      displayHelp
+      exit 0
+      ;;
+   \? )
+     echo "Invalid Option: -$OPTARG" 1>&2
+     exit 1
+     ;;
+  esac
+done
+
+serviceName=$1; shift
+
+if [[ -z "${serviceName}" ]]; then
+    printf 'No serviceName present\n' 1>&2
+    displayHelp
+    exit 1
+fi
+
+inPort=8080
+outPort=8080
+
+while getopts "i:e:" opt; do
+    case $opt in
+        e)
+            outPort=$OPTARG
+            ;;
+        i)
+            inPort=$OPTARG
+            ;;
+    esac
+done
+
+pods=$(oc get pods --output name | grep $serviceName)
+
+if [[ $pods == *$'\n'* ]]; then 
+    echo "Command 'get pods' returned non single pod. Exit...\n$pods"
+    return 1;
+fi
+
+pod=${pods:4}
+
+oc port-forward $pod $inPort:$outPort
+
+
+
+
+

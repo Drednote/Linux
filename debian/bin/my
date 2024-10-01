@@ -1,0 +1,55 @@
+#!/bin/zsh
+
+displayHelp() {
+    echo "\nUsage: my COMMAND [OPTIONS]"
+    echo "\nCommands:"
+    echo "  compose                       compose commands"
+    echo "  idea                          idea commands"
+    echo "  forward                       oc port-forward commands"
+    echo "  calculate                     calculate commands"
+    echo "  db [name]                     create db with [name] in postgres"
+    echo "\nRun 'my COMMAND -h' for more information on a command"
+}
+
+if [[ -z $* ]]; then
+    echo "No args present!"
+    displayHelp
+    exit 1
+fi
+
+while getopts ":h" opt; do
+  case $opt in
+    h)
+        displayHelp
+        exit 0
+        ;;
+    \?)
+        echo "Invalid Option: -$OPTARG" 1>&2
+        exit 1
+        ;;
+  esac
+done
+
+subcommand=$1; shift
+case $subcommand in
+    compose)
+        cd ~/bin/docker-compose || exit
+        source compose.sh
+	    ;;  
+    db)
+        . createDBPosgres.sh
+	    ;;
+    forward)
+        . forward
+	    ;;
+    idea)
+        . idea
+	    ;;
+    calculate)
+        . calc
+      ;;
+    *)
+        echo "Unknown command!"
+        displayHelp
+        return 1
+esac

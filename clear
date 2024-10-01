@@ -1,0 +1,7 @@
+#!/bin/bash
+
+arr=($(find arch -type f))
+
+for f in "${arr[@]}"; do
+    sed -i 's/\r$//' "$f"
+done
