@@ -13,6 +13,8 @@ sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install cur
 CUR_PWD=$(pwd)
 mkdir "$HOME"/bin
 cp -r "$CUR_PWD"/bin "$HOME"
+chmod +x "$HOME"/bin/open
+chmod +x "$HOME"/bin/my
 mkdir "$HOME"/IdeaProjects
 ln -s "$HOME"/bin/docker-compose "$HOME"/IdeaProjects/docker-compose
 
