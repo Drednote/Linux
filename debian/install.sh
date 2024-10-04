@@ -8,7 +8,10 @@ NC='\033[0m' # No Color
 
 UTILS="vim htop"
 
-sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install curl
+sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install curl git
+
+git config --global user.name "Ivan Galushko"
+git config --global user.email "galushko.ivan8@gmail.com"
 
 CUR_PWD=$(pwd)
 mkdir "$HOME"/bin
