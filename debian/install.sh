@@ -19,7 +19,7 @@ cp -r "$CUR_PWD"/bin "$HOME"
 chmod +x "$HOME"/bin/open
 chmod +x "$HOME"/bin/my
 mkdir "$HOME"/IdeaProjects
-ln -s "$HOME"/bin/docker-compose "$HOME"/IdeaProjects/docker-compose
+ln -s "$HOME"/IdeaProjects/docker-compose "$HOME"/bin/docker-compose 
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Install $UTILS? (y,n) ${NC}")" UT
 if [[ $UT == "Y" || $UT == "y" ]]; then
