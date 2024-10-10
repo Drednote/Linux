@@ -8,7 +8,7 @@ YELLOW='\033[1;33m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
-sudo apt-get -y install zsh git
+sudo apt-get -y install zsh
 
 CUR_PWD=$(pwd)
 echo "$CUR_PWD"
@@ -70,3 +70,5 @@ if [[ $SHELL != "/usr/bin/zsh" ]]; then
 fi
 
 cd "$CUR_PWD" || exit
+
+mv *.ttf /usr/share/fonts/truetype
