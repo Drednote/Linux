@@ -6,9 +6,13 @@ YELLOW='\033[1;33m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
-UTILS="vim htop"
+UTILS="curl vim htop git"
 
-sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install curl
+# shellcheck disable=SC2086
+sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install $UTILS
+
+git config --global user.name "Ivan Galushko"
+git config --global user.email "galushko.ivan8@gmail.com"
 
 CUR_PWD=$(pwd)
 mkdir "$HOME"/bin

@@ -11,17 +11,6 @@ UTILS="curl vim htop git"
 # shellcheck disable=SC2086
 sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install $UTILS
 
-git config --global user.name "Ivan Galushko"
-git config --global user.email "galushko.ivan8@gmail.com"
-
-CUR_PWD=$(pwd)
-mkdir "$HOME"/bin
-cp -r "$CUR_PWD"/bin "$HOME"
-chmod +x "$HOME"/bin/open
-chmod +x "$HOME"/bin/my
-mkdir "$HOME"/IdeaProjects
-ln -s "$HOME"/IdeaProjects/docker-compose "$HOME"/bin/docker-compose
-
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Install $UTILS? (y,n) ${NC}")" UT
 if [[ $UT == "Y" || $UT == "y" ]]; then
     # shellcheck disable=SC2086
