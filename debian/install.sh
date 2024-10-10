@@ -11,12 +11,6 @@ UTILS="curl vim htop git"
 # shellcheck disable=SC2086
 sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install $UTILS
 
-read -p "$(echo -e ${YELLOW}"==>${WHITE}Install $UTILS? (y,n) ${NC}")" UT
-if [[ $UT == "Y" || $UT == "y" ]]; then
-    # shellcheck disable=SC2086
-    sudo apt-get -y install $UTILS
-fi
-
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure Zsh? (y,n) ${NC}")" ZSH
 if [[ $ZSH == "Y" || $ZSH == "y" ]]; then
     source zsh/init
