@@ -22,10 +22,14 @@ if [[ $SDK == "Y" || $SDK == "y" ]]; then
     curl -s "https://get.sdkman.io" | bash
 fi
 
-read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure k3s? (y,n) ${NC}")" k3c
-if [[ $k3c == "Y" || $k3c == "y" ]]; then
-    sudo apt-get -y install systemd dbus dbus-user-session
-    curl -sfL https://get.k3s.io | sh -
+read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure k3s? (y,n) ${NC}")" SERVER
+if [[ $SERVER == "Y" || $SERVER == "y" ]]; then
+    source k3s.sh
+fi
+
+read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure k8s? (y,n) ${NC}")" k8s
+if [[ $k8s == "Y" || $k8s == "y" ]]; then
+    source k8s.sh
 fi
 
 ### Script is done ###

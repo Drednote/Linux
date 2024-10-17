@@ -83,10 +83,11 @@ plugins=(git extract zsh-autosuggestions zsh-syntax-highlighting)
 
 # ENV_VARIABLES
 export CONFIG_HOME="$HOME/.config"
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+# export KUBECONFIG=/etc/kubernetes/admin.conf
 # END_ENV_VARIABLES
 
 # append
-path+=("$BUN_INSTALL/bin")
 path+=("$HOME/bin")
 # export to sub-processes (make it inherited by child processes)
 export PATH
