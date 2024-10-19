@@ -32,10 +32,10 @@ if ! command -v helmfile 2>&1 >/dev/null
 then
   cd ~/.cache || exit 0
   version="1.0.0-rc.6"
-  sudo wget https://github.com/helmfile/helmfile/releases/download/v"$version"/helmfile_"$version"_linux_amd64.tar.gz
-  sudo tar -xxf helmfile_"$version"_linux_amd64.tar.gz
-  sudo rm helmfile_"$version"_linux_amd64.tar.gz
-  sudo mv helmfile /usr/local/bin/
+  wget https://github.com/helmfile/helmfile/releases/download/v"$version"/helmfile_"$version"_linux_amd64.tar.gz
+  tar -xxf helmfile_"$version"_linux_amd64.tar.gz
+  rm helmfile_"$version"_linux_amd64.tar.gz
+  mv helmfile /usr/local/bin/
   helmfile init --force
 fi
 
