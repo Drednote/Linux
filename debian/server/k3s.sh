@@ -16,9 +16,9 @@ then
     exit 0
 fi
 
-sudo apt update
-sudo apt-get -y install systemd dbus dbus-user-session socat yq jq containerd \
-  apt-transport-https ca-certificates curl gnupg strace
+apt update
+apt-get -y install systemd dbus dbus-user-session socat yq jq containerd \
+  apt-transport-https ca-certificates curl gnupg strace rsync
 
 containerd config default > /etc/containerd/config.toml
 sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
@@ -26,6 +26,17 @@ sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config
 if ! command -v helm 2>&1 >/dev/null
 then
   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+fi
+
+if ! command -v helmfile 2>&1 >/dev/null
+then
+  cd ~/.cache || exit 0
+  version="1.0.0-rc.6"
+  sudo wget https://github.com/helmfile/helmfile/releases/download/v"$version"/helmfile_"$version"_linux_amd64.tar.gz
+  sudo tar -xxf helmfile_"$version"_linux_amd64.tar.gz
+  sudo rm helmfile_"$version"_linux_amd64.tar.gz
+  sudo mv helmfile /usr/local/bin/
+  helmfile init --force
 fi
 
 if ! command -v k3s 2>&1 >/dev/null
