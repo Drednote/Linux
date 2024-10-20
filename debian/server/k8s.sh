@@ -62,10 +62,9 @@ fi
 if ! kubectl cluster-info | grep -q "is running at"
 then
   sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+  echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' > /etc/environment
 fi
-
-# need add to zshrc
-export KUBECONFIG=/etc/kubernetes/admin.conf
 
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
@@ -78,4 +77,3 @@ then
 fi
 
 echo -e "${GREEN}==>${WHITE} k8s and helm installed${NC}"
-echo -e "${YELLOW}==>${WHITE} Add 'export KUBECONFIG=/etc/kubernetes/admin.conf' to .zshrc or /etc/environment${NC}"

@@ -44,7 +44,7 @@ then
   echo -e "${YELLOW}==>${WHITE} Installing k3s${NC}"
 
   curl -sfL https://get.k3s.io | sh -s - --disable traefik --disable servicelb --cluster-init --servicelb-namespace metallb-system
+  echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' > /etc/environment
 
   echo -e "${GREEN}==>${WHITE} k3s and helm installed${NC}"
-  echo -e "${YELLOW}==>${WHITE} Add 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' to .zshrc or /etc/environment${NC}"
 fi

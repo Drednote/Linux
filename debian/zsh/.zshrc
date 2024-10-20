@@ -83,8 +83,6 @@ plugins=(git extract zsh-autosuggestions zsh-syntax-highlighting)
 
 # ENV_VARIABLES
 export CONFIG_HOME="$HOME/.config"
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-# export KUBECONFIG=/etc/kubernetes/admin.conf
 # END_ENV_VARIABLES
 
 # append
