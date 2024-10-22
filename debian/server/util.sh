@@ -2,7 +2,6 @@
 
 if ! command -v helmfile 2>&1 >/dev/null
 then
-  cd ~/.cache || exit 0
   helmfile_version="1.0.0-rc.6"
   wget https://github.com/helmfile/helmfile/releases/download/v"$helmfile_version"/helmfile_"$helmfile_version"_linux_amd64.tar.gz
   tar -xxf helmfile_"$helmfile_version"_linux_amd64.tar.gz
