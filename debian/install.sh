@@ -24,12 +24,12 @@ fi
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure k3s? (y,n) ${NC}")" SERVER
 if [[ $SERVER == "Y" || $SERVER == "y" ]]; then
-    source server/k3s.sh
+    bash server/k3s.sh
 fi
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure k8s? (y,n) ${NC}")" k8s
 if [[ $k8s == "Y" || $k8s == "y" ]]; then
-    source server/k8s.sh
+    bash server/k8s.sh
 fi
 
 ### Script is done ###

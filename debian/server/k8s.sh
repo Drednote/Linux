@@ -77,3 +77,5 @@ then
 fi
 
 echo -e "${GREEN}==>${WHITE} k8s and helm installed${NC}"
+
+bash util.sh

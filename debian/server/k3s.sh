@@ -28,17 +28,6 @@ then
   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 fi
 
-if ! command -v helmfile 2>&1 >/dev/null
-then
-  cd ~/.cache || exit 0
-  version="1.0.0-rc.6"
-  wget https://github.com/helmfile/helmfile/releases/download/v"$version"/helmfile_"$version"_linux_amd64.tar.gz
-  tar -xxf helmfile_"$version"_linux_amd64.tar.gz
-  rm helmfile_"$version"_linux_amd64.tar.gz
-  mv helmfile /usr/local/bin/
-  helmfile init --force
-fi
-
 if ! command -v k3s 2>&1 >/dev/null
 then
   echo -e "${YELLOW}==>${WHITE} Installing k3s${NC}"
@@ -48,3 +37,5 @@ then
 
   echo -e "${GREEN}==>${WHITE} k3s and helm installed${NC}"
 fi
+
+bash util.sh
