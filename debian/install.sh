@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 UTILS="curl vim htop git"
 
 # shellcheck disable=SC2086
-apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install $UTILS
+apt-get -y update && apt-get -y upgrade && apt-get -y install $UTILS
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure Zsh? (y,n) ${NC}")" ZSH
 if [[ $ZSH == "Y" || $ZSH == "y" ]]; then
