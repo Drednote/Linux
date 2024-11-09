@@ -1,0 +1,5 @@
+kube-apiserver-arg:
+  - "oidc-issuer-url=https://keycloak.drednote.ru/realms/kubernetes"
+  - "oidc-client-id=kube-apiserver"
+  - "oidc-username-claim=name"
+  - "oidc-groups-claim=groups"
