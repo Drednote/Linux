@@ -2,7 +2,7 @@
 
 if ! command -v helmfile 2>&1 >/dev/null
 then
-  helmfile_version="1.0.0-rc.6"
+  helmfile_version="1.1.0"
   wget https://github.com/helmfile/helmfile/releases/download/v"$helmfile_version"/helmfile_"$helmfile_version"_linux_amd64.tar.gz
   tar -xxf helmfile_"$helmfile_version"_linux_amd64.tar.gz
   rm helmfile_"$helmfile_version"_linux_amd64.tar.gz
