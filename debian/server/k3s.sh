@@ -32,7 +32,7 @@ if ! command -v k3s 2>&1 >/dev/null
 then
   echo -e "${YELLOW}==>${WHITE} Installing k3s${NC}"
 
-  mkdir -p /etc/rancher/k3s && cp config.sh /etc/rancher/k3s
+  mkdir -p /etc/rancher/k3s && cp config.yaml /etc/rancher/k3s
   curl -sfL https://get.k3s.io | sh -s - --disable traefik --disable servicelb --cluster-init --servicelb-namespace metallb-system
   echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' > /etc/environment
 
