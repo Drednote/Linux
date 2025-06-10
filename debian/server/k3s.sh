@@ -38,5 +38,3 @@ then
 
   echo -e "${GREEN}==>${WHITE} k3s and helm installed${NC}"
 fi
-
-bash util.sh
