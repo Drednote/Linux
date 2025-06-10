@@ -21,7 +21,7 @@ mkdir -p /tmp/oh-my-zsh
 cd /tmp/oh-my-zsh || exit
 
 echo -e "${GREEN}==>${WHITE} Install oh my zsh${NC}"
-curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 rm -f "$HOME"/.zshrc
 cp "$CUR_PWD"/zsh/.zshrc "$HOME"
