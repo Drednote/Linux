@@ -1,5 +1,11 @@
 #!/bin/bash
 
+SUDO=""
+
+if [ $(whoami) != "root" ]; then
+    SUDO=sudo
+fi
+
 if ! command -v helmfile 2>&1 >/dev/null
 then
   helmfile_version="1.1.0"

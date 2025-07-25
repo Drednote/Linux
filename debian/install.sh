@@ -7,9 +7,14 @@ WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
 UTILS="curl vim htop git"
+SUDO=""
+
+if [ $(whoami) != "root" ]; then
+    SUDO=sudo
+fi
 
 # shellcheck disable=SC2086
-apt-get -y update && apt-get -y upgrade && apt-get -y install $UTILS
+$SUDO apt-get -y update && $SUDO apt-get -y upgrade && $SUDO apt-get -y install $UTILS
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure Zsh? (y,n) ${NC}")" ZSH
 if [[ $ZSH == "Y" || $ZSH == "y" ]]; then
@@ -18,7 +23,7 @@ fi
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure Sdkman? (y,n) ${NC}")" SDK
 if [[ $SDK == "Y" || $SDK == "y" ]]; then
-    apt-get -y install unzip zip
+    $SUDO apt-get -y install unzip zip
     curl -s "https://get.sdkman.io" | bash
 fi
 

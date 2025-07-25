@@ -6,6 +6,12 @@ YELLOW='\033[1;33m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
+SUDO=""
+
+if [ $(whoami) != "root" ]; then
+    SUDO=sudo
+fi
+
 if /usr/sbin/swapon --show | grep -q ".*"
 then
     # Отключение файла подкачки
@@ -16,8 +22,8 @@ then
     exit 0
 fi
 
-apt update
-apt-get -y install systemd dbus dbus-user-session socat yq jq containerd \
+$SUDO apt update
+$SUDO apt-get -y install systemd dbus dbus-user-session socat yq jq containerd \
   apt-transport-https ca-certificates curl gnupg strace rsync
 
 containerd config default > /etc/containerd/config.toml
