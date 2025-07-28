@@ -8,11 +8,13 @@ YELLOW='\033[1;33m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
+SUDO=""
+
 if [ $(whoami) != "root" ]; then
-    sudo apt-get -y install zsh
-else
-    apt-get -y install zsh
+    SUDO=sudo
 fi
+
+$SUDO apt-get -y install zsh
 
 CUR_PWD=$(pwd)
 echo "$CUR_PWD"
@@ -75,4 +77,4 @@ fi
 
 cd "$CUR_PWD" || exit
 
-mv *.ttf /usr/share/fonts/truetype
+$SUDO mv *.ttf /usr/share/fonts/truetype
