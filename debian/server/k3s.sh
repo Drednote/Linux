@@ -17,6 +17,8 @@ then
     # Отключение файла подкачки
     /usr/sbin/swapoff -a
     sed -i '/ swap / s/^/#/' /etc/fstab
+    SWAP_NAME=$(systemctl status '*swap' | head -n 1 | awk '{print $2}')
+    systemctl mask $SWAP_NAME
 
     echo -e "${GREEN}==>${WHITE} Reload computer and call second time this script${NC}"
     exit 0
