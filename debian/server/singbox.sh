@@ -32,3 +32,7 @@ WantedBy=multi-user.target
 EOF
 
 $SUDO mv sing-box.json /etc/sing-box/config.json
+
+$SUDO systemctl daemon-reexec
+$SUDO systemctl daemon-reload
+$SUDO systemctl restart sing-box
