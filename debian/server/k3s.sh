@@ -26,7 +26,7 @@ fi
 
 $SUDO apt update
 $SUDO apt-get -y install systemd dbus dbus-user-session socat yq jq containerd \
-  apt-transport-https ca-certificates curl gnupg strace rsync
+  apt-transport-https ca-certificates curl gnupg strace rsync resolvconf
 
 containerd config default > /etc/containerd/config.toml
 sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
