@@ -29,8 +29,10 @@ fi
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure k3s? (y,n) ${NC}")" SERVER
 if [[ $SERVER == "Y" || $SERVER == "y" ]]; then
-    bash server/k3s.sh
-    bash server/util.sh
+    cd server || exit 0
+    bash k3s.sh
+    bash util.sh
+    cd .. || exit 0
 fi
 
 read -p "$(echo -e ${YELLOW}"==>${WHITE}Configure k8s? (y,n) ${NC}")" k8s
