@@ -36,5 +36,7 @@ nameserver 192.168.1.48
 # nameserver 192.168.1.1
 EOF
 
+$SUDO chattr +i /etc/resolv.conf
+
 # $SUDO resolvconf -u
 # $SUDO systemctl restart resolvconf.service
