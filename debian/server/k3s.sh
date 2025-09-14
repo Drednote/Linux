@@ -44,6 +44,7 @@ then
   mkdir -p /etc/rancher/k3s && cp config.yaml /etc/rancher/k3s
   curl -sfL https://get.k3s.io | sh -s - --disable traefik --disable servicelb --cluster-init --servicelb-namespace metallb-system
   echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' > /etc/environment
+  echo 'K3S_RESOLV_CONF=/etc/resolv.conf' > /etc/systemd/system/k3s.service.env
 
   echo -e "${GREEN}==>${WHITE} k3s and helm installed${NC}"
 fi
