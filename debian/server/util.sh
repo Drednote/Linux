@@ -16,20 +16,20 @@ then
   helmfile init --force
 fi
 
-cfssl_version=1.6.5
-if ! command -v cfssl 2>&1 >/dev/null
-then
-  wget https://github.com/cloudflare/cfssl/releases/download/v"$cfssl_version"/cfssl_"$cfssl_version"_linux_amd64
-  mv cfssl_"$cfssl_version"_linux_amd64 /usr/local/bin/cfssl
-  chmod +x /usr/local/bin/cfssl
-fi
+# cfssl_version=1.6.5
+# if ! command -v cfssl 2>&1 >/dev/null
+# then
+#   wget https://github.com/cloudflare/cfssl/releases/download/v"$cfssl_version"/cfssl_"$cfssl_version"_linux_amd64
+#   mv cfssl_"$cfssl_version"_linux_amd64 /usr/local/bin/cfssl
+#   chmod +x /usr/local/bin/cfssl
+# fi
 
-if ! command -v cfssljson 2>&1 >/dev/null
-then
-  wget https://github.com/cloudflare/cfssl/releases/download/v"$cfssl_version"/cfssljson_"$cfssl_version"_linux_amd64
-  mv cfssljson_"$cfssl_version"_linux_amd64 /usr/local/bin/cfssljson
-  chmod +x /usr/local/bin/cfssljson
-fi
+# if ! command -v cfssljson 2>&1 >/dev/null
+# then
+#   wget https://github.com/cloudflare/cfssl/releases/download/v"$cfssl_version"/cfssljson_"$cfssl_version"_linux_amd64
+#   mv cfssljson_"$cfssl_version"_linux_amd64 /usr/local/bin/cfssljson
+#   chmod +x /usr/local/bin/cfssljson
+# fi
 
 $SUDO cat <<EOF | tee /etc/resolv.conf
 nameserver 192.168.1.48
